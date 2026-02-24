@@ -18,7 +18,7 @@ import SignupPage from "./pages/SignupPage";
 import Layout from "./components/Layout"; // ✅ Only one import
 import AttendencPage from "./pages/AttendencPage";
 import ViewAttendancePage from "./pages/ViewAttendancePage";
-import LeaveListPage from "./Pages/LeaveListPage"; 
+import LeaveListPage from "./pages/LeaveListPage"; 
 
 
 const ProtectedRoute = ({ children }) => {
