@@ -19,7 +19,7 @@ const followUpRoutes = require("./Routes/followUpRoutes");
 const followUpSyncRoutes = require("./Routes/syncFollowUp");
 const attendanceRoutes = require("./Routes/attendanceRoutes");
 const leaveRoutes = require("./Routes/leaveRoutes");
-const getLeavesRoutes = require("./routes/getLeavesRoutes");
+const getLeavesRoutes = require("./Routes/getLeavesRoutes");
 
 
 
