@@ -1,4 +1,4 @@
-const getSheetClient = require("../utils/googleSheet");
+const getSheetClient = require("../Utils/googleSheet");
 
 exports.syncPatientsToSheet = async (req, res) => {
   try {
