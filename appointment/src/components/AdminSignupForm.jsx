@@ -45,7 +45,7 @@ const AdminSignupForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/signup", formData, {
+      await axios.post("https://crmapi.manovaidya.com/api/auth/signup", formData, {
         headers: { role: user?.role },
       });
       alert("User created successfully");
@@ -69,7 +69,7 @@ const AdminSignupForm = () => {
   const handleDelete = async (username) => {
     if (window.confirm(`Delete user "${username}"?`)) {
       try {
-        await axios.delete(`http://localhost:5000/api/auth/delete-user/${username}`, {
+        await axios.delete(`https://crmapi.manovaidya.com/api/auth/delete-user/${username}`, {
           headers: { role: user?.role },
         });
         alert("User deleted");
