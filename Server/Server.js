@@ -29,11 +29,15 @@ const getLeavesRoutes = require("./Routes/getLeavesRoutes");
 const app = express();
 
 app.use(cors({
-  origin: ["http://localhost:5173", "https://your-frontend-url.com","https://docs.google.com/"],
+  origin: [
+    "https://crm.manovaidya.com",      // frontend domain
+    "https://crmapi.manovaidya.com",   // api domain (safe)
+    "http://localhost:5173"  ,
+    "https://docs.google.com/"          // local dev
+  ],
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   credentials: true,
 }));
-
 app.use(express.json());
 
 app.get("/", (req, res) => {
