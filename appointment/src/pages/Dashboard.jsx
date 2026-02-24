@@ -209,14 +209,14 @@ const Dashboard = () => {
   const fetchData = async () => {
     try {
       const [pRes, aRes, asRes, acRes, mRes, cRes, pkgRes, courRes] = await Promise.all([
-        axios.get("/patients/all", { headers: { username: user.username } }),
-        axios.get("/appointments/all", { headers: { username: user.username } }),
-        axios.get("/assistant/confirmed"),
-        axios.get("/account/all"),
-        axios.get("/medicine/all"),
-        axios.get("/chithi/all"),
-        axios.get("/package/all"),
-        axios.get("/courier/all"),
+        axios.get("api/patients/all", { headers: { username: user.username } }),
+        axios.get("api/appointments/all", { headers: { username: user.username } }),
+        axios.get("api/assistant/confirmed"),
+        axios.get("api/account/all"),
+        axios.get("api/medicine/all"),
+        axios.get("api/chithi/all"),
+        axios.get("api/package/all"),
+        axios.get("api/courier/all"),
       ]);
 
       setPatients(pRes.data || []);
