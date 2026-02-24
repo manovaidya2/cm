@@ -21,7 +21,7 @@ const Login = () => {
   useEffect(() => {
     const checkAdmin = async () => {
       try {
-        const res = await axios.get("/auth/admin-exists");
+        const res = await axios.get("api/auth/admin-exists");
         setAdminExists(res.data.exists);
       } catch (err) {
         setAdminExists(true);
@@ -42,7 +42,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/auth/login", loginForm);
+      const res = await axios.post("api/auth/login", loginForm);
       const { username, role } = res.data;
       login(username, role);
       navigate("/dashboard");
@@ -54,7 +54,7 @@ const Login = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/auth/signup", signupForm, {
+      await axios.post("api/auth/signup", signupForm, {
         headers: { role: user?.role || "none" },
       });
       alert("User created successfully");
