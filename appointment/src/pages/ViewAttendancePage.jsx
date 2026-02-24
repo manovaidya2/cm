@@ -20,7 +20,7 @@ const ViewAttendancePage = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/attendance/month?month=${selectedMonth}`)
+    fetch(`https://crmapi.manovaidya.com/api/attendance/month?month=${selectedMonth}`)
       .then((res) => res.json())
       .then((data) => {
         const grouped = data.reduce((acc, curr) => {

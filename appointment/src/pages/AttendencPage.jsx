@@ -27,7 +27,7 @@ const AttendancePage = () => {
 
   const fetchAttendance = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/attendance?date=${date}`);
+      const res = await fetch(`https://crmapi.manovaidya.com/api/attendance?date=${date}`);
       const data = await res.json();
       setAttendance(data);
     } catch (err) {
@@ -71,7 +71,7 @@ const AttendancePage = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/api/attendance", {
+      const res = await fetch("https://crmapi.manovaidya.com/api/attendance", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(record),
@@ -106,7 +106,7 @@ const AttendancePage = () => {
     };
 
     try {
-      await fetch("http://localhost:5000/api/attendance", {
+      await fetch("https://crmapi.manovaidya.com/api/attendance", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(record),
@@ -129,7 +129,7 @@ const AttendancePage = () => {
   }
 
   try {
-    const res = await fetch("http://localhost:5000/api/leaves", {
+    const res = await fetch("https://crmapi.manovaidya.com/api/leaves", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(leaveForm),

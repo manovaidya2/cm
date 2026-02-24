@@ -3,11 +3,14 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api", // Or hardcoded fallback
+  baseURL: import.meta.env.VITE_API_BASE_URL || "https://crmapi.manovaidya.com/api",
   // withCredentials: true, // Important for cookie-based auth
   headers: {
     "Content-Type": "application/json",
   },
 });
+
+// https://crmapi.manovaidya.com/
 
 // Optional: Add a request interceptor (for token headers etc.)
 axiosInstance.interceptors.request.use(
