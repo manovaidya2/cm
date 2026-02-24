@@ -1,5 +1,5 @@
-const Account = require("../models/Account");
-const MedicineRecord = require("../models/MedicineRecord");
+const Account = require("../Models/Account");
+const MedicineRecord = require("../Models/MedicineRecord");
 const AssistantDoctor = require("../Models/AssistantDoctor");
 
 exports.getAllMedicineRecords = async (req, res) => {

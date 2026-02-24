@@ -1,5 +1,5 @@
-const Leave = require("../models/Leave");
-const LeaveStatusUpdate = require("../models/LeaveStatusUpdate");
+const Leave = require("../Models/Leave");
+const LeaveStatusUpdate = require("../Models/LeaveStatusUpdate");
 
 // GET /api/leaves
 exports.getLeaves = async (req, res) => {

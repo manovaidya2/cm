@@ -1,5 +1,5 @@
-const Leave = require("../models/Leave");
-const Employee = require("../models/Employee");
+const Leave = require("../Models/Leave");
+const Employee = require("../Models/Employee");
 
 exports.applyLeave = async (req, res) => {
   try {

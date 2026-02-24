@@ -1,6 +1,6 @@
 // controllers/attendanceController.js
-const Attendance = require("../models/Attendance");
-const Employee = require("../models/Employee");
+const Attendance = require("../Models/Attendance");
+const Employee = require("../Models/Employee");
 
 // Save or update attendance
 exports.saveAttendance = async (req, res) => {
