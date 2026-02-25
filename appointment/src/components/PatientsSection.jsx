@@ -88,7 +88,7 @@ const PatientsSection = ({ patients, fetchData }) => {
     try {
       await Promise.all(
         selectedPatients.map((id) =>
-          axios.delete(`/patients/delete/${id}`)
+          axios.delete(`api/patients/delete/${id}`)
         )
       );
       await fetchData();
@@ -112,7 +112,7 @@ const PatientsSection = ({ patients, fetchData }) => {
     }
 
     try {
-      await axios.put(`/patients/update/${p._id}`, {
+      await axios.put(`api/patients/update/${p._id}`, {
         name,
         age,
         contact,
@@ -141,7 +141,7 @@ const PatientsSection = ({ patients, fetchData }) => {
         for (const row of rows) {
           if (!row.name || !row.age || !row.contact) continue;
 
-          await axios.post("/patients/add", row, {
+          await axios.post("api/patients/add", row, {
             headers: { username: user?.username },
           });
         }
@@ -165,7 +165,7 @@ const PatientsSection = ({ patients, fetchData }) => {
 
         <AddPatientForm
           onAdd={async (data) => {
-            await axios.post("/patients/add", data, {
+            await axios.post("api/patients/add", data, {
               headers: { username: user?.username },
             });
             await fetchData();
@@ -229,7 +229,7 @@ const PatientsSection = ({ patients, fetchData }) => {
                       value={p.status || "In Progress"}
                       onChange={async (e) => {
                         try {
-                          await axios.put(`/patients/update-status/${p._id}`, {
+                          await axios.put(`api/patients/update-status/${p._id}`, {
                             status: e.target.value,
                           });
                           fetchData();
@@ -252,7 +252,7 @@ const PatientsSection = ({ patients, fetchData }) => {
                         <button
                           onClick={async () => {
                             if (window.confirm("Delete this patient?")) {
-                              await axios.delete(`/patients/delete/${p._id}`);
+                              await axios.delete(`api/patients/delete/${p._id}`);
                               fetchData();
                             }
                           }}

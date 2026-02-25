@@ -22,7 +22,7 @@ const PatientsPage = () => {
       setLoading(true);
       setError("");
 
-      const res = await axios.get("/patients/all", {
+      const res = await axios.get("api/patients/all", {
         headers: {
           username: user.username, // 👈 backend requirement
         },

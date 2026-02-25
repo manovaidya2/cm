@@ -40,7 +40,7 @@ const GoogleSheetSync = ({ patients }) => {
     const readyPatients = patients.filter((p) => p.status === "Ready for Consultation");
     if (sheetId && readyPatients.length > 0) {
       axios
-        .post("/sync-to-sheet", { sheetId, data: readyPatients })
+        .post("api/sync-to-sheet", { sheetId, data: readyPatients })
         .then(() => console.log("✅ Synced patients to Google Sheet"))
         .catch((err) => console.error("❌ Patient sync failed", err));
     }
