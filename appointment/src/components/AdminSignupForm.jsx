@@ -28,7 +28,7 @@ const AdminSignupForm = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("/auth/all-users", {
+      const res = await axios.get("api/auth/all-users", {
         headers: { role: user?.role },
       });
       setUsers(res.data);

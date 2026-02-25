@@ -41,7 +41,7 @@ const AppointmentsSection = ({ patients }) => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("/appointments");
+      const res = await axios.get("api/appointments");
       setAppointments(res.data);
     } catch (error) {
       console.error("Error fetching appointments:", error);
@@ -74,7 +74,7 @@ const AppointmentsSection = ({ patients }) => {
     }
 
     try {
-      await axios.post("/appointments/add", formData, {
+      await axios.post("api/appointments/add", formData, {
         headers: {
           username: user.username,
         },
@@ -109,7 +109,7 @@ const AppointmentsSection = ({ patients }) => {
 
   const handleStatusChange = async (id, newStatus) => {
     try {
-      await axios.patch(`/appointments/${id}/status`, { status: newStatus });
+      await axios.patch(`api/appointments/${id}/status`, { status: newStatus });
       setAppointments((prev) =>
         prev.map((item) => (item._id === id ? { ...item, status: newStatus } : item))
       );
