@@ -15,7 +15,7 @@ const AccountPage = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("/account/all");
+      const res = await axios.get("api/account/all");
       const recordsWithFallbackId = res.data.map((r, i) => ({
         ...r,
         displayId: r.displayId || `M${String(i + 1).padStart(2, "0")}`,
@@ -34,7 +34,7 @@ const AccountPage = () => {
 
   const handleStatusChange = async (id, newStatus) => {
     try {
-      await axios.put(`/account/update/${id}`, { actionStatus: newStatus });
+      await axios.put(`api/account/update/${id}`, { actionStatus: newStatus });
       setRecords((prev) =>
         prev.map((r) => (r._id === id ? { ...r, action: newStatus } : r))
       );
@@ -51,11 +51,11 @@ const AccountPage = () => {
 
     try {
       if (record.referenceNumber) {
-        await axios.put(`/account/update-reference/${record._id}`, {
+        await axios.put(`api/account/update-reference/${record._id}`, {
           referenceNumber: refNumber.trim(),
         });
       } else {
-        await axios.post("/account/add-full", {
+        await axios.post("api/account/add-full", {
           assistantId: record._id,
           displayId: record.displayId,
           patientName: record.patientName,
@@ -92,7 +92,7 @@ const AccountPage = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this record?")) return;
     try {
-      await axios.delete(`/account/delete/${id}`);
+      await axios.delete(`api/account/delete/${id}`);
       setRecords((prev) => prev.filter((r) => r._id !== id));
       alert("✅ Record deleted.");
     } catch (err) {

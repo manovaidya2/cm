@@ -24,7 +24,7 @@ const ChithiPage = () => {
 
   const fetchRecords = async () => {
     try {
-      const res = await axios.get("/chithi/all");
+      const res = await axios.get("api/chithi/all");
       const filtered = res.data.filter((r) => r.medicineStatus === "Medicine Ready");
       setRecords(filtered);
     } catch (err) {
@@ -45,7 +45,7 @@ const ChithiPage = () => {
     if (!selectedStatus) return alert("Please select a status before saving.");
 
     try {
-      await axios.post("/chithi/save", {
+      await axios.post("api/chithi/save", {
         accountId: r._id,
         displayId: r.displayId,
         patientName: r.patientName,

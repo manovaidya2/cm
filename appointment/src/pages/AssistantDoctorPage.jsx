@@ -17,7 +17,7 @@ const AssistantDoctorPage = () => {
   useEffect(() => {
     const fetchConfirmedAppointments = async () => {
       try {
-        const res = await axios.get("/assistant/confirmed", {
+        const res = await axios.get("api/assistant/confirmed", {
           headers: { username: user?.username },
         });
 
@@ -67,7 +67,7 @@ const AssistantDoctorPage = () => {
     if (isDuplicate) return alert("Duplicate Display ID detected. It must be unique.");
 
     try {
-      await axios.post(`/assistant/payment/${id}`, {
+      await axios.post(`api/assistant/payment/${id}`, {
         ...data,
         username: user?.username,
         displayId: data.displayId.trim(),
@@ -94,7 +94,7 @@ const AssistantDoctorPage = () => {
     if (!window.confirm("Are you sure you want to delete this record?")) return;
 
     try {
-      await axios.delete(`/assistant/delete/${id}`);
+      await axios.delete(`api/assistant/delete/${id}`);
       setAppointments((prev) => prev.filter((a) => a._id !== id));
       const updatedInfo = { ...paymentInfo };
       delete updatedInfo[id];

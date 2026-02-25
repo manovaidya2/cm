@@ -24,7 +24,7 @@ const FollowUpPage = () => {
 
   const fetchFollowUps = async () => {
     try {
-      const res = await axios.get(`/follow-up/records?search=${search}`);
+      const res = await axios.get(`api/follow-up/records?search=${search}`);
       setRecords(res.data);
     } catch (error) {
       console.error("Failed to fetch follow-up records", error);
@@ -50,7 +50,7 @@ const FollowUpPage = () => {
 
     try {
       // 1. Save follow-up to DB
-      await axios.post("/follow-up/mark-done", {
+      await axios.post("api/follow-up/mark-done", {
         recordId: id,
         followUpDate: data.date,
         followUpTime: data.time,
@@ -66,7 +66,7 @@ const FollowUpPage = () => {
 
       // 4. Send to Google Sheet
       if (sheetId) {
-        await axios.post("/sync-followup-to-sheet", {
+        await axios.post("api/sync-followup-to-sheet", {
           sheetId,
           record: {
             ...updatedRecord,

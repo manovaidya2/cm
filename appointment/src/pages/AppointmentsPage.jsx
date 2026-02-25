@@ -58,9 +58,9 @@ const AppointmentsPage = () => {
   const fetchData = async () => {
     try {
       const [res1, res2, res3] = await Promise.all([
-        axios.get("/appointments/all", { headers: { username: user?.username } }),
-        axios.get("/patients/all", { headers: { username: user?.username } }),
-        axios.get("/google-patients/all", { headers: { username: user?.username } }),
+        axios.get("api/appointments/all", { headers: { username: user?.username } }),
+        axios.get("api/patients/all", { headers: { username: user?.username } }),
+        axios.get("api/google-patients/all", { headers: { username: user?.username } }),
       ]);
       setAppointments(res1.data);
       const mergedPatients = [...res2.data, ...res3.data.map(p => ({ ...p, isGoogle: true }))];
@@ -94,7 +94,7 @@ const AppointmentsPage = () => {
     if (isSlotTaken) return alert("This time slot is already booked.");
 
     try {
-      await axios.post("/appointments/add", formData, {
+      await axios.post("api/appointments/add", formData, {
         headers: { username: user?.username },
       });
       setFormData({ patientId: "", date: "", time: "", notes: "", location: "", message: "" });
@@ -125,7 +125,7 @@ const AppointmentsPage = () => {
     if (isSlotTaken) return alert("This time slot is already booked.");
 
     try {
-      await axios.patch(`/appointments/${id}/reschedule`, {
+      await axios.patch(`api/appointments/${id}/reschedule`, {
         date,
         time,
         location,
@@ -142,7 +142,7 @@ const AppointmentsPage = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this appointment?")) return;
     try {
-      await axios.delete(`/appointments/${id}`, {
+      await axios.delete(`api/appointments/${id}`, {
         headers: { username: user?.username, role: user?.role },
       });
       fetchData();
@@ -282,7 +282,7 @@ const AppointmentsPage = () => {
                         handleRescheduleOpen(a);
                       } else {
                         axios
-                          .patch(`/appointments/${a._id}/status`, { status: newStatus })
+                          .patch(`api/appointments/${a._id}/status`, { status: newStatus })
                           .then(fetchData)
                           .catch(() => alert("Failed to update status"));
                       }

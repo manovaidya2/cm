@@ -27,7 +27,7 @@ const AppointmentTable = ({ appointments }) => {
       }));
     } else {
       try {
-        await axios.patch(`/appointments/${id}/status`, { status: newStatus });
+        await axios.patch(`api/appointments/${id}/status`, { status: newStatus });
         setLocalAppointments((prev) =>
           prev.map((app) => (app._id === id ? { ...app, status: newStatus } : app))
         );
@@ -53,7 +53,7 @@ const AppointmentTable = ({ appointments }) => {
     }
 
     try {
-      await axios.patch(`/appointments/${id}/reschedule`, {
+      await axios.patch(`api/appointments/${id}/reschedule`, {
         date,
         time,
         location,
@@ -81,7 +81,7 @@ const AppointmentTable = ({ appointments }) => {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`/appointments/${id}`, {
+      await axios.delete(`api/appointments/${id}`, {
         headers: { username: user.username },
       });
       setLocalAppointments((prev) => prev.filter((app) => app._id !== id));

@@ -99,7 +99,7 @@ const AppointmentsSection = ({ patients }) => {
     if (!confirmed) return;
 
     try {
-      await axios.delete(`/appointments/${id}`);
+      await axios.delete(`api/appointments/${id}`);
       setAppointments((prev) => prev.filter((item) => item._id !== id));
     } catch (error) {
       console.error("Error deleting appointment:", error);

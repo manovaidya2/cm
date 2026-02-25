@@ -24,7 +24,7 @@ const CourierPage = () => {
 
   const fetchCourierData = async () => {
     try {
-      const res = await axios.get("/courier/all");
+      const res = await axios.get("api/courier/all");
       setRecords(res.data);
     } catch (err) {
       console.error("Error fetching courier data:", err);
@@ -54,7 +54,7 @@ const CourierPage = () => {
     if (!update?.courierStatus) return alert("Select courier status");
 
     try {
-      await axios.post("/courier/save", {
+      await axios.post("api/courier/save", {
         ...record,
         courierStatus: update.courierStatus,
         trackingId: update.trackingId || "",

@@ -22,7 +22,7 @@ const MedicinePage = () => {
 
   const fetchRecords = async () => {
     try {
-      const res = await axios.get("/medicine/all");
+      const res = await axios.get("api/medicine/all");
       setRecords(res.data);
     } catch (err) {
       console.error("Error fetching medicine data:", err);
@@ -42,7 +42,7 @@ const MedicinePage = () => {
     if (!selectedStatus) return alert("Please select a status before saving.");
 
     try {
-      await axios.post("/medicine/save", {
+      await axios.post("api/medicine/save", {
         accountId: r._id,
         displayId: r.displayId,
         patientName: r.patientName,

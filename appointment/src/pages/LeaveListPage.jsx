@@ -15,7 +15,7 @@ const LeaveListPage = () => {
   useEffect(() => {
     const fetchLeaves = async () => {
       try {
-        const res = await axios.get("/leaves");
+        const res = await axios.get("api/leaves");
         setLeaves(res.data);
         setFilteredLeaves(res.data);
       } catch {
@@ -46,7 +46,7 @@ const LeaveListPage = () => {
 
     setSavingId(id);
     try {
-      const res = await axios.post(`/leaves/${id}/status`, {
+      const res = await axios.post(`api/leaves/${id}/status`, {
         status: leave.status,
         message: leave.message || "",
       });

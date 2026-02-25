@@ -71,7 +71,7 @@ const FollowUpSheetSync = ({ followUpData }) => {
     console.log("🟡 Sending unsynced follow-up records:", unsynced);
 
     axios
-      .post("/sync-followup-to-sheet", {
+      .post("api/sync-followup-to-sheet", {
         sheetId,
         data: unsynced,
       })

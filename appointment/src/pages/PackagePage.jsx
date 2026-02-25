@@ -23,7 +23,7 @@ const PackagePage = () => {
 
   const fetchPackageData = async () => {
     try {
-      const res = await axios.get("/package/all");
+      const res = await axios.get("api/package/all");
       setRecords(res.data);
     } catch (err) {
       console.error("Error fetching packaging data:", err);
@@ -43,7 +43,7 @@ const PackagePage = () => {
     if (!selectedStatus) return alert("Please select a package status.");
 
     try {
-      await axios.post("/package/save", {
+      await axios.post("api/package/save", {
         ...r,
         packageStatus: selectedStatus,
       });
